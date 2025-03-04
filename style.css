@@ -1,10 +1,17 @@
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap");
 
 :root {
-  --color-dark: hsl(252, 30%, 17%);
-  --color-light: hsl(252, 30%, 95%);
+  --primary-color-hue: 252;
+  --dark-color-lightness: 17%;
+  --light-color-lightness: 95%;
+  --white-color-lightness: 100%;
+
+
+  --color-dark: hsl(252, 30%, var(--dark-color-lightness));
+  --color-light: hsl(252, 30%, var(--light-color-lightness));
   --color-gray: hsl(250, 3%, 55%);
-  --color-primary: hsl(252, 75%, 60%);
+  --color-white: hsl(252, 30%, var(--white-color-lightness));
+  --color-primary: hsl(var(--primary-color-hue), 75%, 60%);
   --color-secondary: hsl(252, 100%, 90%);
   --color-success: hsl(120, 95%, 65%);
   --color-danger: hsl(0, 95%, 65%);
@@ -86,7 +93,7 @@ img {
 /* NavBar */
 
 nav {
-  background: white;
+  background: var(--color-white);
   width: 100%;
   padding: 0.7rem 0;
   position: fixed;
@@ -146,7 +153,7 @@ main .container .left {
 
 main .container .left .profile {
   padding: var(--card-padding);
-  background: white;
+  background: var(--color-white);
   border-radius: var(--border-radius);
   display: flex;
   align-items: center;
@@ -158,7 +165,7 @@ main .container .left .profile {
 
 .left .sidebar {
   margin-top: 1rem;
-  background: white;
+  background: var(--color-white);
   border-radius: var(--border-radius);
 }
 
@@ -184,7 +191,7 @@ main .container .left .profile {
 
 .left .sidebar i .notification-count {
   background: var(--color-danger);
-  color: white;
+  color: var(--color-white);
   font-size: 0.7rem;
   width: fit-content;
   border-radius: 0.8rem;
@@ -241,7 +248,7 @@ main .container .left .profile {
   top: 0;
   left: 110%;
   width: 30rem;
-  background-color: white;
+  background-color: var(--color-white);
   border-radius: var(--card-border-radius);
   padding: var(--card-padding);
   box-shadow: 0 0 2rem hsl(var(--color-primary), 75%, 60% 25%);
@@ -255,7 +262,7 @@ main .container .left .profile {
   height: 1.2rem;
   display: block;
   position: absolute;
-  background-color: white;
+  background-color: var(--color-white);
   left: -0.6rem;
   transform: rotate(45deg);
 }
@@ -290,7 +297,7 @@ main .container .left .profile {
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  color: white;
+  color: var(--color-white);
   font-size: 0.7rem;
   width: 100%;
   position: relative;
@@ -342,7 +349,7 @@ main .container .left .profile {
 .middle .create-post {
   padding: 0.4rem var(--card-padding);
   border-radius: var(--border-radius);
-  background: white;
+  background: var(--color-white);
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -363,7 +370,7 @@ main .container .left .profile {
 /* feeds */
 
 .middle .feeds .feed {
-  background: white;
+  background: var(--color-white);
   border-radius: var(--card-border-radius);
   padding: var(--card-padding);
   margin: 1rem 0;
@@ -405,7 +412,7 @@ main .container .left .profile {
   border-radius: 50%;
   display: block;
   overflow: hidden;
-  border: 2px solid white;
+  border: 2px solid var(--color-white);
   margin-left: -0.6rem;
 }
 
@@ -428,7 +435,7 @@ main .container .right {
 }
 
 .right .messages {
-  background: white;
+  background: var(--color-white);
   border-radius: var(--card-border-radius);
   padding: var(--card-padding);
 }
@@ -495,7 +502,7 @@ main .container .right {
   width: 0.8rem;
   height: 0.8rem;
   border-radius: 50%;
-  border: 3px solid white;
+  border: 3px solid var(--color-white);
   background: var(--color-success);
   position: absolute;
   bottom: 0;
@@ -516,7 +523,7 @@ main .container .right {
 }
 
 .right .request {
-  background-color: white;
+  background-color: var(--color-white);
   padding: var(--card-padding);
   border-radius: var(--card-border-radius);
   margin-bottom: 0.7rem;
@@ -550,10 +557,11 @@ main .container .right {
 }
 
 .customize-theme .card {
-  background: white;
+  background: var(--color-white);
   padding: 3rem;
   border-radius: var(--card-border-radius);
   width: 50%;
+  box-shadow: 0 0 1rem var(--color-primary);
 }
 
 .customize-theme .font-size {
@@ -627,7 +635,7 @@ main .container .right {
 }
 
 .customize-theme .choose-color span.active {
-  border: 5px solid white;
+  border: 5px solid var(--color-white);
 }
 
 .customize-theme .background {
@@ -676,4 +684,83 @@ main .container .right {
   border-radius: 50%;
   border: 2px solid var(--color-gray);
   margin-right: 1rem;
+}
+
+@media screen and (max-width: 1200px) {
+  .container {
+    width: 96%;
+  }
+
+  main .container {
+    grid-template-columns: 5rem auto 30vw;
+    gap: 1rem;
+  }
+
+  .left {
+    width: 5rem;
+    z-index: 5;
+  }
+
+  main .container .left .profile {
+    display: none;
+  }
+
+  .sidebar h3 {
+    display: none;
+  }
+
+  .left .btn {
+    display: none;
+  }
+
+  .customize-theme .card {
+    width: 80vw;
+  }
+}
+
+@media screen and (max-width: 992px) {
+  nav .search-bar {
+    display: none;
+  }
+
+  main .container {
+    grid-template-columns: 0 auto 5rem;
+    gap: 0;
+  }
+
+  main .container .left {
+    grid-column: 3/4;
+    position: fixed;
+    bottom: 0;
+    right: 0;
+  }
+
+  .left .notification-popup {
+    display: absolute;
+    left: -20rem;
+    width: 20rem;
+  }
+
+  .left .notification-popup::before {
+    position: absolute;
+    top: 1.3rem;
+    left: calc(20rem - 0.6rem);
+    display: block;
+  }
+
+  main .container .left .sidebar > div h3 {
+    display: none;
+  }
+
+  main .container .middle {
+    grid-column: 1/3;
+  }
+
+  main .container .right {
+    display: none;
+  }
+
+  .customize-theme .card {
+    width: 80vw;
+  }
 }
